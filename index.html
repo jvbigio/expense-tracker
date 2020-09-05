@@ -17,32 +17,77 @@
   <div class="navbar-image">
     
   </div>
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>ID</th>
-            <th>Job Title</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Joe</td>
-            <td>001</td>
-            <td>Software Developer</td>
-          </tr>
-          <tr>
-            <td>Kim</td>
-            <td>002</td>
-            <td>HR</td>
-          </tr>
-          <tr>
-            <td>Lisa</td>
-            <td>003</td>
-            <td>Marketing</td>
-          </tr>
-        </tbody>
-      </table>
+  <!-- 
+    Needed for budget tracker:
+    [ 
+    type of charge: cash credit, (expense or income: do +/- next to amount)
+    OR..
+    Better probably is have category: shopping, groceries, entertainment
+    Description of charge: Exxon, whole foods, etc so u know where
+    date of charge
+    amount of charge
+    EXAMPLE:
+    Date     | Description | Category          | Amount
+    09/05/20 | UBER        | rental car & taxi | #30.00
+
+    ADD search box to filter so that you can search for a charge as in part 4 of traversy DOM video.
+
+    Expense categories:
+    Auto & Transport
+    Bills & Utilities
+    Business Services
+    Education
+    Entertainment
+    Fees & Charges
+    Financial
+    Food & Dining
+    Gifts & Donations
+    Health & Fitness
+    Home
+    Income (Add + sign or make green text for income.)
+    Kids
+    Misc. Expenses
+    Personal Care
+    Pets
+    Shopping
+    Taxes
+    Transfer
+    Travel
+    Uncategorized
+
+   -->
+   <div class="expense-table">
+     <table>
+       <thead>
+         <tr>
+           <th>Date</th>
+           <th>Description</th>
+           <th>Category</th>
+           <th>Amount</th>
+         </tr>
+       </thead>
+       <tbody>
+         <tr>
+           <td>09/03/20</td>
+           <td>Exxon</td>
+           <td>Car Related</td>
+           <td>$30.00</td>
+         </tr>
+         <tr>
+           <td>09/03/20</td>
+           <td>Whole Foods</td>
+           <td>Groceries</td>
+           <td>$100.00</td>
+         </tr>
+         <tr>
+           <td>09/05/20</td>
+           <td>NFC Pay</td>
+           <td>Income</td>
+           <td>$1500.00</td>
+         </tr>
+       </tbody>
+     </table>
+   </div>
   <script src="app.js"></script>
 </body>
 </html>

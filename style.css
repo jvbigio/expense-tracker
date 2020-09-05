@@ -36,8 +36,21 @@ span {
   padding: 1rem;
 }
 
+.expense-table {
+  display: flex;
+  justify-content: center;
+}
+
 table {
+  margin: 1rem;
   border-collapse: collapse;
+  width: 100%;
+  max-width: 768px;
+}
+
+th {
+  background: #666;
+  color: var(--main-font-color);
 }
 
 td,
@@ -47,6 +60,16 @@ th {
   text-align: left;
 }
 
+tr:nth-child(even) {
+  /* background: #CCC; */
+  /* background: #CFDBC5; */
+  /* background: #F0FFF0; */
+  background: #E0EEE0;
+}
+
+tr:nth-child(odd) {
+  background: #FFF;
+}
 
 /* 
 colors:
