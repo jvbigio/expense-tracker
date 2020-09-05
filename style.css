@@ -1,0 +1,45 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+header {
+  background: #025928;
+  padding: 0.75rem;
+  text-align: left;
+  color: #303030;
+  color: #fff;
+}
+
+span {
+  /* color: #818385; */
+  color: #d96704;
+}
+
+.navbar-image {
+  /* background-image: url(images/money-bg.jpg); */
+  background-image: url('https://i.postimg.cc/Gm6N43rB/money-bg.jpg');
+  opacity: 0.5;
+  padding: 1rem;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+td,
+th {
+  border: 1px solid black;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+
+/* 
+colors:
+greens
+#28a745
+#006400
+
+*/
