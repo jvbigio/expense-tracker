@@ -14,7 +14,6 @@ header {
   text-align: left;
   /* color: #303030; */
   color: #f2f3f4;
-
 }
 
 body {
@@ -24,8 +23,7 @@ body {
   background: #f2f3f4;
 }
 
-span {
-  /* color: #818385; */
+.logo {
   color: #d96704;
 }
 
@@ -39,27 +37,19 @@ span {
 .menu-container {
   /* border: 3px solid yellow; */
   display: flex;
-  flex-wrap: wrap;
-  /* justify-content: space-between;  */
-  /* align-items: flex-start; */
-  /* margin: 2rem; */
-  flex-basis: 50%;
-  /* background: #666;
-  background: #CCC;
-  background: #CFDBC5; */
-  /* use this one or the one currently used: */
-  background: #E0EEE0;
-  background: #F0FFF0;
+  justify-content: center;
+  background: #f0fff0;
 }
 
-.menu-container>.form-row {
+/* .menu-container > .form-row {
   flex: 0 0 100%;
-}
+} */
 
 .form-row {
+  /* display: flex; */
   /* border: 3px solid green; */
   padding: 10px 0;
-  flex-basis: 0 0 50%;
+  /* flex-basis: 0 0 50%; */
   /* flex-basis: 39%; */
   /* margin: 2rem; */
   margin-left: 10px;
@@ -67,19 +57,38 @@ span {
 
 .form-row label {
   padding-right: 4px;
+  padding-right: 10px;
 }
 
-/* .form-row input {
-  flex: 0 0 100%;
-} */
+.form-row input {
+  /* flex: 0 0 100%; */
+  /* flex: 1; */
+  padding-left: 5px;
+}
 
 form {
   display: flex;
-  flex-wrap: wrap;
+  /* justify-content: space-around; */
+  /* width: 100%; */
+  /* flex: 1; */
+  align-items: center;
+  /* justify-content: space-evenly; */
+  justify-content: center;
+  /* width: 100%; */
+  /* keep: */
+  /* flex-wrap: wrap; */
 }
 
 /* input {
   flex: 0 0 100%;
+} */
+
+/* .btn-bg {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  background: #f2f3f4;
+
 } */
 
 .submit-btn {
@@ -90,9 +99,9 @@ form {
 .add-items {
   background: #025928;
   color: var(--main-font-color);
-  padding: 3px 4px;
+  padding: 5px 10px;
   border-radius: 20px;
-  padding: 8px 16px;
+  /* padding: 10px 16px; */
   text-decoration: none;
   cursor: pointer;
   font-size: 17px;
@@ -147,11 +156,11 @@ tr:nth-child(even) {
   /* background: #CCC; */
   /* background: #CFDBC5; */
   /* background: #F0FFF0; */
-  background: #E0EEE0;
+  background: #e0eee0;
 }
 
 tr:nth-child(odd) {
-  background: #FFF;
+  background: #fff;
 }
 
 /* 
