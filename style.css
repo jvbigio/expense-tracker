@@ -36,10 +36,85 @@ span {
   padding: 1rem;
 }
 
-.expense-table {
+.menu-container {
+  /* border: 3px solid yellow; */
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: space-between;  */
+  /* align-items: flex-start; */
+  /* margin: 2rem; */
+  flex-basis: 50%;
+  /* background: #666;
+  background: #CCC;
+  background: #CFDBC5; */
+  /* use this one or the one currently used: */
+  background: #E0EEE0;
+  background: #F0FFF0;
+}
+
+.menu-container>.form-row {
+  flex: 0 0 100%;
+}
+
+.form-row {
+  /* border: 3px solid green; */
+  padding: 10px 0;
+  flex-basis: 0 0 50%;
+  /* flex-basis: 39%; */
+  /* margin: 2rem; */
+  margin-left: 10px;
+}
+
+.form-row label {
+  padding-right: 4px;
+}
+
+/* .form-row input {
+  flex: 0 0 100%;
+} */
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* input {
+  flex: 0 0 100%;
+} */
+
+.submit-btn {
   display: flex;
   justify-content: center;
 }
+
+.add-items {
+  background: #025928;
+  color: var(--main-font-color);
+  padding: 3px 4px;
+  border-radius: 20px;
+  padding: 8px 16px;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 17px;
+  margin: 1rem;
+  text-shadow: 0px 1px 0px #025928;
+}
+
+.table-container {
+  /* border: 3px solid red; */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+/* .expense-table {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
 
 table {
   margin: 1rem;

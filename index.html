@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
   <link rel="stylesheet" href="style.css">
   <title>Expense Tracker</title>
 </head>
+
 <body>
   <header>
     <div class="navbar">
@@ -15,79 +17,69 @@
     </div>
   </header>
   <div class="navbar-image">
-    
+
   </div>
-  <!-- 
-    Needed for budget tracker:
-    [ 
-    type of charge: cash credit, (expense or income: do +/- next to amount)
-    OR..
-    Better probably is have category: shopping, groceries, entertainment
-    Description of charge: Exxon, whole foods, etc so u know where
-    date of charge
-    amount of charge
-    EXAMPLE:
-    Date     | Description | Category          | Amount
-    09/05/20 | UBER        | rental car & taxi | #30.00
+  <div class="menu-container">
+    <form action="">
+      <div class="form-row">
+        <label for="date">Date:</label>
+        <input type="date" name="date" id="date">
+      </div>
+      <div class="form-row">
+        <label for="description">Description:</label>
+        <input type="text" id="description">
+      </div>
+      <div class="form-row">
+        <label for="category">Category:</label>
+        <input type="text" id="category">
+      </div>
+      <div class="form-row">
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount">
+      </div>
+    </form>
+  </div>
+  <div class="submit-btn">
+    <button class="submit-btn add-items" type="submit">Submit</button>
+  </div>
 
-    ADD search box to filter so that you can search for a charge as in part 4 of traversy DOM video.
+  <div class="table-container">
+    <div class="expense-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th colspan="4">Description</th>
+            <th colspan="3">Category</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>09/03/20</td>
+            <td colspan="4">Exxon</td>
+            <td colspan="3">Car Related</td>
+            <td>$30.00</td>
+          </tr>
+          <tr>
+            <td>09/03/20</td>
+            <td colspan="4">Whole Foods</td>
+            <td colspan="3">Groceries</td>
+            <td>$100.00</td>
+          </tr>
+          <tr>
+            <td>09/05/20</td>
+            <td colspan="4">NFC Pay</td>
+            <td colspan="3">Income</td>
+            <td>$1500.00</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
-    Expense categories:
-    Auto & Transport
-    Bills & Utilities
-    Business Services
-    Education
-    Entertainment
-    Fees & Charges
-    Financial
-    Food & Dining
-    Gifts & Donations
-    Health & Fitness
-    Home
-    Income (Add + sign or make green text for income.)
-    Kids
-    Misc. Expenses
-    Personal Care
-    Pets
-    Shopping
-    Taxes
-    Transfer
-    Travel
-    Uncategorized
 
-   -->
-   <div class="expense-table">
-     <table>
-       <thead>
-         <tr>
-           <th>Date</th>
-           <th>Description</th>
-           <th>Category</th>
-           <th>Amount</th>
-         </tr>
-       </thead>
-       <tbody>
-         <tr>
-           <td>09/03/20</td>
-           <td>Exxon</td>
-           <td>Car Related</td>
-           <td>$30.00</td>
-         </tr>
-         <tr>
-           <td>09/03/20</td>
-           <td>Whole Foods</td>
-           <td>Groceries</td>
-           <td>$100.00</td>
-         </tr>
-         <tr>
-           <td>09/05/20</td>
-           <td>NFC Pay</td>
-           <td>Income</td>
-           <td>$1500.00</td>
-         </tr>
-       </tbody>
-     </table>
-   </div>
   <script src="app.js"></script>
 </body>
+
 </html>
