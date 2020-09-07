@@ -31,7 +31,6 @@ function addExpense (e) {
   amount.value = ''
 }
 
-// dataSet is the plural set of data, data is the single
 function dataSaver (dataArray) {
   const dataSet = dataStorageHelper()
   dataSet.push(dataArray)
