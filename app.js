@@ -45,14 +45,14 @@ function dataLoader () {
 }
 
 function createExpenseTable (data) {
-  const table = document.querySelector('table')
-  table.appendChild(tBody)
-  tBody.innerHTML = `
+  // const table = document.querySelector('table')
+  // table.appendChild(tBody)
+  tBody.innerHTML += `
     <tr>
-      <td>${data.date}</td>
-      <td colspan="4">${data.description}</td>
-      <td colspan="3">${data.category}</td>
-      <td>${data.amount}</td>
+      <td>${data[0]}</td>
+      <td colspan="4">${data[1]}</td>
+      <td colspan="3">${data[2]}</td>
+      <td>${data[3]}</td>
       <td><i class="fas fa-minus-circle delete-icon"></i></td>
     </tr>
   `
@@ -68,3 +68,8 @@ function dataStorageHelper () {
   }
   return dataSet
 }
+
+// const dataArray = ['09-20-2020', 'WF', 'Food', '30.00']
+// dataArray.forEach(data => {
+//   console.log(data[])
+// }) 
