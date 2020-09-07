@@ -135,6 +135,10 @@ i {
   color: #666;
 }
 
+.delete-header {
+  color: var(--main-font-color);
+}
+
 table {
   /* margin: 1rem; */
   margin: 3rem 0;
@@ -159,6 +163,7 @@ th {
 .table-header {
   text-align: center;
 }
+
 
 tr:nth-child(even) {
   /* background: #CCC; */

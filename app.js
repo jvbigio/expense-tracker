@@ -4,9 +4,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 const form = document.querySelector('.add-form')
 form.addEventListener('submit', addExpense)
-// const tBody = document.getElementsByTagName('tbody')
-const tBody = document.querySelector('tbody')
-// console.log(tBody)
+const removeExpense = document.querySelector('.delete-icon')
+removeExpense.addEventListener('click', deleteExpense)
 
 function addExpense (e) {
   const date = document.getElementById('date')
@@ -44,9 +43,19 @@ function dataLoader () {
   })
 }
 
+function deleteExpense (e) {
+  let td
+  if (!e.target.matches('.delete-icon')) {
+
+  } else {
+    console.log('clicked')
+    td = e.target.closest('td')
+  }
+}
+
 function createExpenseTable (data) {
-  // const table = document.querySelector('table')
-  // table.appendChild(tBody)
+  const tBody = document.querySelector('tbody')
+
   tBody.innerHTML += `
     <tr>
       <td>${data[0]}</td>
@@ -68,8 +77,3 @@ function dataStorageHelper () {
   }
   return dataSet
 }
-
-// const dataArray = ['09-20-2020', 'WF', 'Food', '30.00']
-// dataArray.forEach(data => {
-//   console.log(data[])
-// }) 
