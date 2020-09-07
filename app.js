@@ -1,24 +1,28 @@
-const form = document.querySelector('.add-form')
-const date = document.getElementById('date')
-// const description = document.getElementById('description').value
-// const category = document.getElementById('category')
-// const amount = document.getElementById('amount')
-// console.log(date)
-form.addEventListener('submit', addItem)
+document.addEventListener('DOMContentLoaded', function () {
+  dataLoader()
+})
 
-function addItem (e) {
-  const expenseDate = date.value
-  // const expenseDescription = description
-  // const expenseCategory = category.value
-  // const expenseAmount = amount.value
+const form = document.querySelector('.add-form')
+form.addEventListener('submit', addExpense)
+// const tBody = document.getElementsByTagName('tbody')
+const tBody = document.querySelector('tbody')
+// console.log(tBody)
+
+function addExpense (e) {
+  const date = document.getElementById('date')
   const description = document.getElementById('description').value
   const category = document.getElementById('category').value
   const amount = document.getElementById('amount').value
+  // unable to disable date if blank, fix later
+  if (date === '' && description === '' && category === '' && amount === '') {
+    e.preventDefault()
+    return false
+  }
   e.preventDefault()
   const dataArray = []
-  dataArray.push(date.value, description, category, amount) // works on submit
-  // dataArray.push(description)
+  dataArray.push(date.value, description, category, amount)
   console.log(dataArray)
+  createExpenseTable(dataArray)
   dataSaver(dataArray)
   console.log(dataSaver)
   date.value = ''
@@ -34,12 +38,31 @@ function dataSaver (dataArray) {
   localStorage.setItem('dataSet', JSON.stringify(dataSet))
 }
 
-// function dataLoader () {
-//   const dataSet = dataStorageHelper()
-//   dataSet.forEach(data => {
+function dataLoader () {
+  const dataSet = dataStorageHelper()
+  dataSet.forEach(data => {
+    console.log(data)
+  })
+}
 
-//   })
-// }
+function createExpenseTable (data) {
+  const tr = document.createElement('tr')
+  const td = document.createElement('td')
+  tBody.appendChild(tr)
+  let html = ''
+  // for (let i = 0; i < data.length; i++) {
+  html += `
+    <tr>
+      <td>${data.date}</td>
+      <td colspan="4">${data.description}</td>
+      <td colspan="3">${data.category}</td>
+      <td>${data.amount}</td>
+      <td><i class="fas fa-minus-circle delete-icon"></i></td>
+    </tr>
+  `
+  // }
+  tBody.innerHTML = html
+}
 
 function dataStorageHelper () {
   const dataGetter = JSON.parse(localStorage.getItem('dataSet'))

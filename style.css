@@ -134,9 +134,10 @@ i {
 }
 
 table {
-  margin: 1rem;
+  /* margin: 1rem; */
+  margin: 3rem 0;
   border-collapse: collapse;
-  width: 100%;
+  /* width: 100%; */
   max-width: 768px;
 }
 
