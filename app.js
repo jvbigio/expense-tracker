@@ -41,17 +41,14 @@ function dataSaver (dataArray) {
 function dataLoader () {
   const dataSet = dataStorageHelper()
   dataSet.forEach(data => {
-    console.log(data)
+    createExpenseTable(data)
   })
 }
 
 function createExpenseTable (data) {
-  const tr = document.createElement('tr')
-  const td = document.createElement('td')
-  tBody.appendChild(tr)
-  let html = ''
-  // for (let i = 0; i < data.length; i++) {
-  html += `
+  const table = document.querySelector('table')
+  table.appendChild(tBody)
+  tBody.innerHTML = `
     <tr>
       <td>${data.date}</td>
       <td colspan="4">${data.description}</td>
@@ -60,8 +57,6 @@ function createExpenseTable (data) {
       <td><i class="fas fa-minus-circle delete-icon"></i></td>
     </tr>
   `
-  // }
-  tBody.innerHTML = html
 }
 
 function dataStorageHelper () {
