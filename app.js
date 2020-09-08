@@ -44,12 +44,12 @@ function dataLoader () {
 }
 
 function deleteExpense (e) {
-  let td
+  let delIcon
   if (!e.target.matches('.delete-icon')) {
-
+    return false
   } else {
-    console.log('clicked')
-    td = e.target.closest('td')
+    delIcon = e.target.closest('i')
+    console.log(delIcon)
   }
 }
 
