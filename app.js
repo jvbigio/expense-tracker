@@ -22,14 +22,9 @@ function addExpense (e) {
   e.preventDefault()
   const dataArray = []
   dataArray.push(date.value, description, category, amount)
-  console.log(dataArray)
   createExpenseTable(dataArray)
   dataSaver(dataArray)
-  // console.log(dataSaver)
-  date.value = ''
-  description.value = ''
-  category.value = ''
-  amount.value = ''
+  form.reset()
 }
 
 function dataSaver (dataArray) {
@@ -46,12 +41,12 @@ function dataLoader () {
 }
 
 function deleteExpense (e) {
+  let tableRow
   if (!e.target.matches('.delete-icon')) {
     return false
   } else {
-    const tableRow = e.target.closest('tr')
+    tableRow = e.target.closest('tr')
     const rowText = tableRow.innerText
-    console.log(rowText)
     let storedExpenses = dataStorageHelper()
     storedExpenses = storedExpenses.filter(expense => expense !== rowText)
     localStorage.setItem('dataSet', JSON.stringify(storedExpenses))
