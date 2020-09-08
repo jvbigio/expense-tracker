@@ -4,8 +4,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
 const form = document.querySelector('.add-form')
 form.addEventListener('submit', addExpense)
-const removeExpense = document.querySelector('.delete-icon')
-removeExpense.addEventListener('click', deleteExpense)
+// const removeExpense = document.querySelector('.delete-icon')
+// removeExpense.addEventListener('click', deleteExpense)
+const tBody = document.querySelector('tbody')
+tBody.addEventListener('click', deleteExpense)
 
 function addExpense (e) {
   const date = document.getElementById('date')
@@ -44,12 +46,18 @@ function dataLoader () {
 }
 
 function deleteExpense (e) {
-  let delIcon
+  // let row
   if (!e.target.matches('.delete-icon')) {
     return false
   } else {
-    delIcon = e.target.closest('i')
-    console.log(delIcon)
+    // row = e.target.closest('td')
+    const tableRow = e.target.parentElement.parentElement
+    // console.log(tableRow)
+    const rowText = tableRow.innerText
+    let storedExpenses = dataStorageHelper()
+    storedExpenses = storedExpenses.filter(expense => expense !== rowText)
+    localStorage.setItem('dataSet', JSON.stringify(storedExpenses))
+    tableRow.remove()
   }
 }
 
