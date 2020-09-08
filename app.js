@@ -49,6 +49,10 @@ function deleteExpense (e) {
     const rowText = tableRow.innerText
     let storedExpenses = dataStorageHelper()
     storedExpenses = storedExpenses.filter(expense => expense !== rowText)
+    // let storedData = storedExpenses.map(expense => {
+    // }).filter((expense) => {
+    //   return expense !== rowText
+    // })
     localStorage.setItem('dataSet', JSON.stringify(storedExpenses))
     tableRow.remove()
   }
