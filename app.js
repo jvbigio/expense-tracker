@@ -46,13 +46,28 @@ function deleteExpense (e) {
     return false
   } else {
     tableRow = e.target.closest('tr')
-    const rowText = tableRow.innerText
-    let storedExpenses = dataStorageHelper()
-    storedExpenses = storedExpenses.filter(expense => expense !== rowText)
-    // let storedData = storedExpenses.map(expense => {
-    // }).filter((expense) => {
-    //   return expense !== rowText
-    // })
+    let rowText = tableRow.innerText
+    console.log(rowText) // string
+    // rowText = rowText.split('  ')
+    // let newRowText = rowText.join(' ')
+    rowText.replace(/\s{2,}/g, ' ')
+    rowText = rowText.join()
+    console.log(rowText)
+    // console.log(newRowText)
+
+    // const newData = Array.from(rowText)
+    // // newData = Array.from(newData)
+    // console.log(newData)
+    const storedExpenses = dataStorageHelper()
+    console.log(storedExpenses) // array
+    // let newData = storedExpenses.map(a => a.join(' ')).join(', ')
+    // newData = newData.split(',')
+    // console.log(storedExpenses)
+    // console.log(newData) // array
+    // original:
+    // storedExpenses = storedExpenses.filter(expense => expense !== rowText)
+    // storedExpenses = storedExpenses.filter(expense => expense !== newData)
+    // newData = newData.filter(expense => expense !== rowText)
     localStorage.setItem('dataSet', JSON.stringify(storedExpenses))
     tableRow.remove()
   }
@@ -64,8 +79,8 @@ function createExpenseTable (data) {
   tBody.innerHTML += `
     <tr>
       <td>${data[0]}</td>
-      <td colspan="4">${data[1]}</td>
-      <td colspan="3">${data[2]}</td>
+      <td>${data[1]}</td>
+      <td>${data[2]}</td>
       <td>${data[3]}</td>
       <td><i class="fas fa-minus-circle delete-icon"></i></td>
     </tr>
