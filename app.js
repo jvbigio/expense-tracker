@@ -4,8 +4,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 const form = document.querySelector('.add-form')
 form.addEventListener('submit', addExpense)
-// const removeExpense = document.querySelector('.delete-icon')
-// removeExpense.addEventListener('click', deleteExpense)
 const tBody = document.querySelector('tbody')
 tBody.addEventListener('click', deleteExpense)
 
@@ -22,7 +20,6 @@ function addExpense (e) {
   e.preventDefault()
 
   const dataObj = {
-    // id: id(),
     id: new Date().getMilliseconds(),
     date: date.value,
     description: description,
@@ -55,9 +52,9 @@ function deleteExpense (e) {
   } else {
     tableRow = e.target.closest('tr')
     const rowText = tableRow.innerText
-    console.log(rowText) // string
+    // console.log(typeof rowText) // string
     let storedExpenses = dataStorageHelper()
-    console.log(storedExpenses) // array
+    // console.log(storedExpenses) // object
     storedExpenses = storedExpenses.filter(expense => expense !== rowText)
     localStorage.setItem('dataSet', JSON.stringify(storedExpenses))
     tableRow.remove()
