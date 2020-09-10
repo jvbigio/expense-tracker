@@ -7,7 +7,7 @@ form.addEventListener('submit', addExpense)
 const tBody = document.querySelector('tbody')
 tBody.addEventListener('click', deleteExpense)
 
-function addExpense (e) {
+function addExpense(e) {
   const date = document.getElementById('date')
   const description = document.getElementById('description').value
   const category = document.getElementById('category').value
@@ -35,20 +35,20 @@ function addExpense (e) {
   form.reset()
 }
 
-function dataSaver (dataObj) {
+function dataSaver(dataObj) {
   const dataSet = dataStorageHelper()
   dataSet.push(dataObj)
   localStorage.setItem('dataSet', JSON.stringify(dataSet))
 }
 
-function dataLoader () {
+function dataLoader() {
   const dataSet = dataStorageHelper()
   dataSet.forEach(data => {
     createExpenseTable(data)
   })
 }
 
-function deleteExpense (e) {
+function deleteExpense(e) {
   let tableRow
   if (!e.target.matches('.delete-icon')) {
     return false
@@ -59,7 +59,7 @@ function deleteExpense (e) {
     const storedExpenses = dataStorageHelper()
     console.log(storedExpenses) // array of objects
 
-    const expenseBeingDeleted = storedExpenses.map(rowID => {
+    const expenseBeingDeleted = storedExpenses.forEach(rowID => {
       console.log(rowID.id) // logs id
     })
     // pseudo code from Jamie
@@ -70,7 +70,7 @@ function deleteExpense (e) {
   }
 }
 
-function createExpenseTable (data) {
+function createExpenseTable(data) {
   const tBody = document.querySelector('tbody')
 
   tBody.innerHTML += `
@@ -85,7 +85,7 @@ function createExpenseTable (data) {
   `
 }
 
-function dataStorageHelper () {
+function dataStorageHelper() {
   const dataGetter = JSON.parse(localStorage.getItem('dataSet'))
   let dataSet
   if (!dataGetter) {
