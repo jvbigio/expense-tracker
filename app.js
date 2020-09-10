@@ -20,11 +20,11 @@ function addExpense (e) {
   e.preventDefault()
 
   const dataObj = {
-    id: new Date().getMilliseconds(),
     date: date.value,
     description: description,
     category: category,
-    amount: amount
+    amount: amount,
+    id: new Date().getMilliseconds()
   }
   // const dataArray = []
   // dataArray.push(dataObj)
@@ -56,10 +56,16 @@ function deleteExpense (e) {
     tableRow = e.target.closest('tr')
     const rowText = tableRow.innerText
     console.log(rowText) // string
-    let storedExpenses = dataStorageHelper()
+    const storedExpenses = dataStorageHelper()
     console.log(storedExpenses) // array of objects
+
+    const expenseBeingDeleted = storedExpenses.forEach(rowID => {
+      console.log(rowID.id) // logs id
+    })
+    // storedExpenses = storedExpenses.filter
     // pseudo code from Jamie
     // expensesArray.filter(expense => expense.id !== expenseBeingDeleted.id)
+
     localStorage.setItem('dataSet', JSON.stringify(storedExpenses))
     tableRow.remove()
   }
