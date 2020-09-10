@@ -22,7 +22,8 @@ function addExpense (e) {
   e.preventDefault()
 
   const dataObj = {
-    id: id(),
+    // id: id(),
+    id: new Date().getMilliseconds(),
     date: date.value,
     description: description,
     category: category,
@@ -34,17 +35,9 @@ function addExpense (e) {
   form.reset()
 }
 
-function getUniqueId () {
-  let i = 0
-  return function () {
-    return i++
-  }
-}
-const id = getUniqueId()
-
-function dataSaver (dataArray) {
+function dataSaver (dataObj) {
   const dataSet = dataStorageHelper()
-  dataSet.push(dataArray)
+  dataSet.push(dataObj)
   localStorage.setItem('dataSet', JSON.stringify(dataSet))
 }
 
@@ -64,7 +57,7 @@ function deleteExpense (e) {
     const rowText = tableRow.innerText
     console.log(rowText) // string
     let storedExpenses = dataStorageHelper()
-    // console.log(storedExpenses) // array
+    console.log(storedExpenses) // array
     storedExpenses = storedExpenses.filter(expense => expense !== rowText)
     localStorage.setItem('dataSet', JSON.stringify(storedExpenses))
     tableRow.remove()
