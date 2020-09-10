@@ -26,9 +26,12 @@ function addExpense (e) {
     category: category,
     amount: amount
   }
+  // const dataArray = []
+  // dataArray.push(dataObj)
+  // createExpenseTable(dataArray)
+  // dataSaver(dataArray)
   createExpenseTable(dataObj)
   dataSaver(dataObj)
-  console.log(dataObj)
   form.reset()
 }
 
@@ -52,10 +55,11 @@ function deleteExpense (e) {
   } else {
     tableRow = e.target.closest('tr')
     const rowText = tableRow.innerText
-    // console.log(typeof rowText) // string
+    console.log(rowText) // string
     let storedExpenses = dataStorageHelper()
-    // console.log(storedExpenses) // object
-    storedExpenses = storedExpenses.filter(expense => expense !== rowText)
+    console.log(storedExpenses) // array of objects
+    // pseudo code from Jamie
+    // expensesArray.filter(expense => expense.id !== expenseBeingDeleted.id)
     localStorage.setItem('dataSet', JSON.stringify(storedExpenses))
     tableRow.remove()
   }
