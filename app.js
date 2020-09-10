@@ -60,8 +60,10 @@ function deleteExpense (e) {
     console.log(storedExpenses) // array of objects
 
     const expenseBeingDeleted = storedExpenses.map(rowID => {
-      console.log(rowID.id) // logs id
+      // console.log(rowID.id) // logs id
+      return rowID
     })
+    storedExpenses.filter(expense => expense !== expenseBeingDeleted.id)
     // pseudo code from Jamie
     // expensesArray.filter(expense => expense.id !== expenseBeingDeleted.id)
 
