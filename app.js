@@ -20,12 +20,27 @@ function addExpense (e) {
     return false
   }
   e.preventDefault()
-  const dataArray = []
-  dataArray.push(date.value, description, category, amount)
-  createExpenseTable(dataArray)
-  dataSaver(dataArray)
+
+  const dataObj = {
+    id: id(),
+    date: date.value,
+    description: description,
+    category: category,
+    amount: amount
+  }
+  createExpenseTable(dataObj)
+  dataSaver(dataObj)
+  console.log(dataObj)
   form.reset()
 }
+
+function getUniqueId () {
+  let i = 0
+  return function () {
+    return i++
+  }
+}
+const id = getUniqueId()
 
 function dataSaver (dataArray) {
   const dataSet = dataStorageHelper()
@@ -46,28 +61,11 @@ function deleteExpense (e) {
     return false
   } else {
     tableRow = e.target.closest('tr')
-    let rowText = tableRow.innerText
+    const rowText = tableRow.innerText
     console.log(rowText) // string
-    // rowText = rowText.split('  ')
-    // let newRowText = rowText.join(' ')
-    rowText.replace(/\s{2,}/g, ' ')
-    rowText = rowText.join()
-    console.log(rowText)
-    // console.log(newRowText)
-
-    // const newData = Array.from(rowText)
-    // // newData = Array.from(newData)
-    // console.log(newData)
-    const storedExpenses = dataStorageHelper()
-    console.log(storedExpenses) // array
-    // let newData = storedExpenses.map(a => a.join(' ')).join(', ')
-    // newData = newData.split(',')
-    // console.log(storedExpenses)
-    // console.log(newData) // array
-    // original:
-    // storedExpenses = storedExpenses.filter(expense => expense !== rowText)
-    // storedExpenses = storedExpenses.filter(expense => expense !== newData)
-    // newData = newData.filter(expense => expense !== rowText)
+    let storedExpenses = dataStorageHelper()
+    // console.log(storedExpenses) // array
+    storedExpenses = storedExpenses.filter(expense => expense !== rowText)
     localStorage.setItem('dataSet', JSON.stringify(storedExpenses))
     tableRow.remove()
   }
@@ -78,10 +76,11 @@ function createExpenseTable (data) {
 
   tBody.innerHTML += `
     <tr>
-      <td>${data[0]}</td>
-      <td>${data[1]}</td>
-      <td>${data[2]}</td>
-      <td>${data[3]}</td>
+    <td>${data.date}</td>
+    <td>${data.description}</td>
+    <td>${data.category}</td>
+    <td>${data.amount}</td>
+    <td>${data.id}</td>
       <td><i class="fas fa-minus-circle delete-icon"></i></td>
     </tr>
   `
