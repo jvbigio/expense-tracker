@@ -13,7 +13,7 @@ function addExpense (e) {
   const category = document.getElementById('category').value
   const amount = document.getElementById('amount').value
   // unable to disable date if blank, fix later
-  if (date === '' && description === '' && category === '' && amount === '') {
+  if (description === '' && category === '' && amount === '') {
     e.preventDefault()
     return false
   }
@@ -87,35 +87,28 @@ function dataStorageHelper () {
 
 // INCOMPLETE, SORT FUNCTIONALITY COMING SOON //
 const tableHeaders = document.getElementsByClassName('fa-sort')
-const dataSet = JSON.parse(localStorage.getItem('dataSet'))
-let order = false
 
 for (const header of tableHeaders) {
   header.addEventListener('click', sortTable)
 }
 
+let order = false
 // sort functionality not complete yet
 function sortTable (e) {
   const dataSet = JSON.parse(localStorage.getItem('dataSet'))
   order = !order
   let newData = dataSet.slice()
-  // console.log(newData)
+
   newData = newData.sort((a, b) => {
     return a.description.toLowerCase() > b.description.toLowerCase() ? 1 : -1
   })
-  // newData.sort((a, b) => (a.date > b.date) ? 1 : -1)
-  // // console.log(newData)
-  // localStorage.setItem('dataSet', JSON.stringify(newData))
-  // newData.sort((a, b) => {
-  // dataSet.sort((a, b) => {
+
+  // newData = dataSet.sort((a, b) => {
   //   const x = a.description.toLowerCase()
-  //   // console.log(x)
   //   const y = b.description.toLowerCase()
-  //   console.log(y)
   //   return (order ? x > y : x < y)
   // })
-  // console.log(newData)
-  // console.log(dataSet)
   localStorage.setItem('dataSet', JSON.stringify(newData))
+  return newData
 }
 // END //
