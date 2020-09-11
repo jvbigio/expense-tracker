@@ -88,7 +88,6 @@ function dataStorageHelper () {
 // INCOMPLETE, SORT FUNCTIONALITY COMING SOON //
 const tableHeaders = document.getElementsByClassName('fa-sort')
 let clicked = false
-// sort functionality not complete yet
 for (const header of tableHeaders) {
   let newData
   header.addEventListener('click', function (e) {
