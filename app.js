@@ -87,28 +87,26 @@ function dataStorageHelper () {
 
 // INCOMPLETE, SORT FUNCTIONALITY COMING SOON //
 const tableHeaders = document.getElementsByClassName('fa-sort')
-
-for (const header of tableHeaders) {
-  header.addEventListener('click', sortTable)
-}
-
-let order = false
+let clicked = false
 // sort functionality not complete yet
-function sortTable (e) {
-  const dataSet = JSON.parse(localStorage.getItem('dataSet'))
-  order = !order
-  let newData = dataSet.slice()
-
-  newData = newData.sort((a, b) => {
-    return a.description.toLowerCase() > b.description.toLowerCase() ? 1 : -1
+for (const header of tableHeaders) {
+  let newData
+  header.addEventListener('click', function (e) {
+    const dataSet = JSON.parse(localStorage.getItem('dataSet'))
+    newData = dataSet.slice()
+    if (!clicked) {
+      newData = newData.sort((a, b) => {
+        return a.description.toLowerCase() > b.description.toLowerCase() ? 1 : -1
+      })
+    }
+    clicked = true
+    localStorage.setItem('dataSet', JSON.stringify(newData))
   })
-
-  // newData = dataSet.sort((a, b) => {
-  //   const x = a.description.toLowerCase()
-  //   const y = b.description.toLowerCase()
-  //   return (order ? x > y : x < y)
-  // })
-  localStorage.setItem('dataSet', JSON.stringify(newData))
-  return newData
+  header.addEventListener('click', function (e) {
+    if (clicked) {
+      newData = newData.slice().sort().reverse()
+    }
+    localStorage.setItem('dataSet', JSON.stringify(newData))
+    clicked = false
+  })
 }
-// END //
