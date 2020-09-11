@@ -64,11 +64,11 @@ function createExpenseTable (data) {
 
   tBody.innerHTML += `
     <tr>
-    <td>${data.date}</td>
-    <td>${data.description}</td>
-    <td>${data.category}</td>
-    <td>${data.amount}</td>
-    <td>${data.id}</td>
+      <td class="date-row">${data.date}</td>
+      <td class="description-row">${data.description}</td>
+      <td class="category-row">${data.category}</td>
+      <td class="amount-row">${data.amount}</td>
+      <td class="id-row">${data.id}</td>
       <td><i class="fas fa-minus-circle delete-icon"></i></td>
     </tr>
   `
@@ -84,3 +84,38 @@ function dataStorageHelper () {
   }
   return dataSet
 }
+
+// INCOMPLETE, SORT FUNCTIONALITY COMING SOON //
+const tableHeaders = document.getElementsByClassName('fa-sort')
+const dataSet = JSON.parse(localStorage.getItem('dataSet'))
+let order = false
+
+for (const header of tableHeaders) {
+  header.addEventListener('click', sortTable)
+}
+
+// sort functionality not complete yet
+function sortTable (e) {
+  const dataSet = JSON.parse(localStorage.getItem('dataSet'))
+  order = !order
+  let newData = dataSet.slice()
+  // console.log(newData)
+  newData = newData.sort((a, b) => {
+    return a.description.toLowerCase() > b.description.toLowerCase() ? 1 : -1
+  })
+  // newData.sort((a, b) => (a.date > b.date) ? 1 : -1)
+  // // console.log(newData)
+  // localStorage.setItem('dataSet', JSON.stringify(newData))
+  // newData.sort((a, b) => {
+  // dataSet.sort((a, b) => {
+  //   const x = a.description.toLowerCase()
+  //   // console.log(x)
+  //   const y = b.description.toLowerCase()
+  //   console.log(y)
+  //   return (order ? x > y : x < y)
+  // })
+  // console.log(newData)
+  // console.log(dataSet)
+  localStorage.setItem('dataSet', JSON.stringify(newData))
+}
+// END //

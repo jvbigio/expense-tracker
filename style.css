@@ -10,16 +10,16 @@
   box-sizing: border-box;
 }
 
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  background: var(--anti-flash-white);
+}
+
 header {
   background: var(--deep-green);
   padding: 0.75rem 0 0.75rem 1rem;
   text-align: left;
   color: var(--anti-flash-white);
-}
-
-body {
-  font-family: 'Noto Sans JP', sans-serif;
-  background: var(--anti-flash-white);
 }
 
 .logo {
@@ -38,6 +38,12 @@ body {
   background: #f0fff0;
 }
 
+form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .form-row {
   padding: 10px 0;
   margin-left: 10px;
@@ -50,12 +56,6 @@ body {
 
 .form-row input {
   padding-left: 5px;
-}
-
-form {
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .submit-btn {
@@ -84,20 +84,6 @@ form {
   width: 100%;
 }
 
-i {
-  margin-left: 0.5rem;
-  color: var(--anti-flash-white);
-  cursor: pointer;
-}
-
-.delete-icon {
-  color: var(--dark-grey);
-}
-
-.delete-header {
-  color: var(--anti-flash-white);
-}
-
 table {
   margin: 3rem 0;
   border-collapse: collapse;
@@ -120,10 +106,25 @@ th {
 .table-header {
   text-align: center;
 }
+
 tr:nth-child(even) {
   background: #e0eee0;
 }
 
 tr:nth-child(odd) {
   background: #fff;
+}
+
+i {
+  margin-left: 0.5rem;
+  color: var(--anti-flash-white);
+  cursor: pointer;
+}
+
+.delete-icon {
+  color: var(--dark-grey);
+}
+
+.delete-header {
+  color: var(--anti-flash-white);
 }
