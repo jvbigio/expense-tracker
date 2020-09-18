@@ -3,27 +3,34 @@ document.addEventListener('DOMContentLoaded', function () {
 })
 
 const form = document.querySelector('.add-form')
-form.addEventListener('submit', addExpense)
 const tBody = document.querySelector('tbody')
+const date = document.getElementById('date')
+const description = document.getElementById('description')
+const category = document.getElementById('category')
+const amount = document.getElementById('amount')
+const inputs = document.querySelectorAll('input')
+const errorMsg = document.querySelector('.error-message')
+
+form.addEventListener('submit', addExpense)
 tBody.addEventListener('click', deleteExpense)
 
 function addExpense (e) {
-  const date = document.getElementById('date')
-  const description = document.getElementById('description').value
-  const category = document.getElementById('category').value
-  const amount = document.getElementById('amount').value
-  // unable to disable date if blank, fix later
-  if (description === '' && category === '' && amount === '') {
+  if (date.value.toString() === '' || description.value === '' || category.value === '' || amount.value === '') {
     e.preventDefault()
+    inputs.forEach(input => input.classList.add('input-warning'))
+    errorMsg.textContent = 'Input fields must not be empty!'
+
     return false
   }
   e.preventDefault()
+  inputs.forEach(input => input.classList.remove('input-warning'))
+  errorMsg.style.display = 'none'
 
   const dataObj = {
     date: date.value,
-    description: description,
-    category: category,
-    amount: amount,
+    description: description.value,
+    category: category.value,
+    amount: amount.value,
     id: new Date().getMilliseconds()
   }
   createExpenseTable(dataObj)
@@ -51,7 +58,7 @@ function deleteExpense (e) {
   } else {
     tableRow = e.target.closest('tr')
     const storedExpenses = dataStorageHelper()
-    const id = e.target.parentElement.previousSibling.previousSibling.textContent
+    const id = e.target.parentElement.parentElement.id
     const filteredExpenses = storedExpenses.filter(expense => expense.id.toString() !== id)
 
     localStorage.setItem('dataSet', JSON.stringify(filteredExpenses))
@@ -60,28 +67,39 @@ function deleteExpense (e) {
 }
 
 function createExpenseTable (data) {
-  const tBody = document.querySelector('tbody')
-
-  tBody.innerHTML += `
-    <tr>
-      <td class="date-row">${data.date}</td>
-      <td class="description-row">${data.description}</td>
-      <td class="category-row">${data.category}</td>
-      <td class="amount-row">${data.amount}</td>
-      <td class="id-row">${data.id}</td>
-      <td><i class="fas fa-minus-circle delete-icon"></i></td>
-    </tr>
-  `
+  const expenseRow = document.createElement('tr')
+  expenseRow.id = data.id
+  const dateTd = document.createElement('td')
+  dateTd.classList = 'date-row'
+  dateTd.textContent = data.date
+  const descriptionTd = document.createElement('td')
+  descriptionTd.classList = 'description-row'
+  descriptionTd.textContent = data.description
+  const categoryTd = document.createElement('td')
+  categoryTd.classList = 'category-row'
+  categoryTd.textContent = data.category
+  const amountTd = document.createElement('td')
+  amountTd.classList = 'amount-row'
+  amountTd.textContent = data.amount
+  const idTd = document.createElement('td')
+  idTd.classList = 'id-row'
+  idTd.textContent = data.id
+  const deleteTd = document.createElement('td')
+  const deleteIcon = document.createElement('i')
+  deleteIcon.classList = 'fas fa-minus-circle delete-icon'
+  deleteTd.appendChild(deleteIcon)
+  expenseRow.appendChild(dateTd)
+  expenseRow.appendChild(descriptionTd)
+  expenseRow.appendChild(categoryTd)
+  expenseRow.appendChild(amountTd)
+  expenseRow.appendChild(idTd)
+  expenseRow.appendChild(deleteTd)
+  tBody.appendChild(expenseRow)
 }
 
 function dataStorageHelper () {
-  const dataGetter = JSON.parse(localStorage.getItem('dataSet'))
-  let dataSet
-  if (!dataGetter) {
-    dataSet = []
-  } else {
-    dataSet = JSON.parse(localStorage.getItem('dataSet'))
-  }
+  const dataSet = !JSON.parse(localStorage.getItem('dataSet')) ? [] : JSON.parse(localStorage.getItem('dataSet'))
+
   return dataSet
 }
 

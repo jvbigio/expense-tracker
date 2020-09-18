@@ -128,3 +128,12 @@ i {
 .delete-header {
   color: var(--anti-flash-white);
 }
+
+.input-warning {
+  border: 2px solid red;
+}
+
+.error-message {
+  text-align: center;
+  background-color: orange;
+}
