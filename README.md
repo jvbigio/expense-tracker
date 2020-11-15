@@ -8,7 +8,7 @@ See application [here](https://jvbigio.github.io/expense-tracker/)
 
 Screenshot:
 
-![Image of expense tracker sample data](https://i.postimg.cc/rwtBtMy3/expense-tracker.png)
+![expense-tracker](https://user-images.githubusercontent.com/43301741/99192379-86546480-2740-11eb-8561-f73d12cbad2a.png)
 
 # Summary
 

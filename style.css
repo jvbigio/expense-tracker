@@ -27,7 +27,7 @@ header {
 }
 
 .navbar-image {
-  background-image: url('https://i.postimg.cc/Gm6N43rB/money-bg.jpg');
+  background-image: url('./images/money-bg.jpg');
   opacity: 0.5;
   padding: 1rem;
 }
